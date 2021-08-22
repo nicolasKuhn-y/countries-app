@@ -20,7 +20,15 @@ body {
 
 main{
     margin: 1rem;
+
+    @media (min-width: 64rem){
+        margin: 2rem 3rem;
+    }
 }
 
+img{
+    max-width: 100%;
+    height: auto;
+}
 
 `;

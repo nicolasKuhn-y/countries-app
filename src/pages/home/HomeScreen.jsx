@@ -1,9 +1,11 @@
 import React from "react";
+import { RegionFilter } from "../../components/RegionFilter";
 
-export const HomeScreen = () => {
-  return (
-    <div>
-      <h1>Home Screen</h1>
-    </div>
-  );
-};
+import { SearchBar } from "../../components/SearchBar";
+
+export const HomeScreen = () => (
+  <>
+    <SearchBar />
+    <RegionFilter />
+  </>
+);
