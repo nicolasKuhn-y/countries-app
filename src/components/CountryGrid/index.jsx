@@ -3,15 +3,11 @@ import { CountryCard } from "../CountryCard";
 
 import { Grid } from "./styles";
 
-export const CountryGrid = ({ data, isLoading }) => {
-  const countriesData = data;
-
-  console.log(countriesData);
-
+export const CountryGrid = ({ data }) => {
   return (
     <Grid>
-      {!isLoading &&
-        countriesData.map((country) => (
+      {data !== null &&
+        data.map((country) => (
           <CountryCard key={country.name} {...country} />
         ))}
     </Grid>

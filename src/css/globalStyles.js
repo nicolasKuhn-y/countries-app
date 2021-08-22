@@ -26,9 +26,15 @@ main{
     }
 }
 
-img{
-    max-width: 100%;
-   
+a{
+    text-decoration: none;
+
+    color: ${({ theme }) => theme.text};
+}
 }
 
-`;
+img{
+    max-width: 100%;
+    height: auto;
+}
+`

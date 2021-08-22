@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useState, memo } from "react";
 
 import { IconContext } from "react-icons/lib";
 import { HiSearch } from "react-icons/hi";
 
 import { Section, Input, Mover, InputBorder } from "./styles";
+import { useFetch } from "../../hooks/useFetch";
 
-export const SearchBar = () => {
+export const SearchBar = memo(({ setDataToShow }) => {
+  const [country, setCountry] = useState("");
+
+  const { data, isLoading } = useFetch(
+    `https://restcountries.eu/rest/v2/name/${encodeURI(country)}`
+  );
+
+  console.log(data);
+
+  const handleChange = (e) => {
+    setCountry(e.target.value);
+
+    if (!isLoading) setDataToShow(data);
+  };
+
   return (
     <Section>
       <Mover>
@@ -15,8 +30,12 @@ export const SearchBar = () => {
       </Mover>
 
       <InputBorder>
-        <Input autoComplete="no" placeholder="Search for a country..." />
+        <Input
+          autoComplete="no"
+          placeholder="Search for a country..."
+          onChange={handleChange}
+        />
       </InputBorder>
     </Section>
   );
-};
+});
