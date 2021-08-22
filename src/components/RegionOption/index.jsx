@@ -1,7 +1,7 @@
 import React from "react";
 
-export const RegionOption = ({ name, ...attr }) => (
-  <option {...attr} value={name}>
-    {name}
+export const RegionOption = ({ value, ...attr }) => (
+  <option {...attr} value={value}>
+    {value}
   </option>
 );

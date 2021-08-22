@@ -5,24 +5,22 @@ import { RegionOption } from "../RegionOption";
 import { Container } from "../../css/components";
 import { SelectBorder, Select } from "./styles";
 
-export const RegionFilter = () => {
-  return (
-    <Container>
-      <SelectBorder>
-        <Select as="select">
-          <RegionOption defaultValue name="Filter by Region" />
+export const RegionFilter = ({ setCountry }) => (
+  <Container>
+    <SelectBorder>
+      <Select as="select" onChange={({ target }) => setCountry(target.value)}>
+        <option disabled defaultValue>Filter by Region</option>
 
-          <RegionOption name="Africa" />
+        <RegionOption value="africa" />
 
-          <RegionOption name="America" />
+        <RegionOption value="americas" />
 
-          <RegionOption name="Asia" />
+        <RegionOption value="asia" />
 
-          <RegionOption name="Europe" />
+        <RegionOption value="europe" />
 
-          <RegionOption name="Oceania" />
-        </Select>
-      </SelectBorder>
-    </Container>
-  );
-};
+        <RegionOption value="oceania" />
+      </Select>
+    </SelectBorder>
+  </Container>
+);
