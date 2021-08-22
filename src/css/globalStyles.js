@@ -17,4 +17,10 @@ body {
     background-color: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.text};
 }
+
+main{
+    margin: 1rem;
+}
+
+
 `;
