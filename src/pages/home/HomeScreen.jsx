@@ -9,7 +9,7 @@ import { types } from "../../context/types";
 
 export const HomeScreen = () => {
   const {
-    countries: { countriesList, countriesToShow },
+    countries: { countriesToShow },
     dispatch,
   } = useContext(CountriesContext);
 
@@ -26,7 +26,7 @@ export const HomeScreen = () => {
     })();
   }, [dispatch]);
 
-  console.log(countriesToShow)
+  console.log(countriesToShow);
 
   return (
     <>

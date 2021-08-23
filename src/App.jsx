@@ -14,7 +14,6 @@ import { CountriesContext } from "./context/CountriesContext";
 const initialState = {
   countriesList: [],
   countriesToShow: [],
-  filterByName: "",
 };
 
 export const App = () => {

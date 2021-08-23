@@ -11,8 +11,14 @@ export const countriesReducer = (state, { type, payload }) => {
       );
 
       return { ...state, countriesToShow: filteredByRegion };
-    case types.setCountry:
-      return;
+    case types.setSearchCountry:
+      const matchedCountries = state.countriesList.filter(({ name }) =>
+        name.toLowerCase().includes(payload.search.toLowerCase())
+      );
+
+      console.log(matchedCountries);
+
+      return { ...state, countriesToShow: matchedCountries };
 
     default:
       return state;

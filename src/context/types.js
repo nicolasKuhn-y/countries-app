@@ -1,5 +1,5 @@
 export const types = {
   setCountryList: "set country list",
-  setCountry: "set country",
+  setSearchCountry: "set cearch Country",
   setRegion: "set region",
 };
