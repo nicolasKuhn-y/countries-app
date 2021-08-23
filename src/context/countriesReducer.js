@@ -1,24 +1,17 @@
 import { types } from "./types";
 
+import { filterByRegion, getMatchedCountries } from "./countriesActions";
+
 export const countriesReducer = (state, { type, payload }) => {
   switch (type) {
     case types.setCountryList:
       return { ...state, countriesList: payload, countriesToShow: payload };
 
     case types.setRegion:
-      const filteredByRegion = state.countriesList.filter(
-        ({ region }) => region === payload.regionSelected
-      );
+      return { ...state, countriesToShow: filterByRegion(state, payload) };
 
-      return { ...state, countriesToShow: filteredByRegion };
     case types.setSearchCountry:
-      const matchedCountries = state.countriesList.filter(({ name }) =>
-        name.toLowerCase().includes(payload.search.toLowerCase())
-      );
-
-      console.log(matchedCountries);
-
-      return { ...state, countriesToShow: matchedCountries };
+      return { ...state, countriesToShow: getMatchedCountries(state, payload) };
 
     default:
       return state;
