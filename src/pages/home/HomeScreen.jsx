@@ -1,31 +1,39 @@
-import React, { useState, useEffect } from "react";
-
-import { useFetch } from "../../hooks/useFetch";
-import { useStorage } from "../../hooks/useStorage";
+import React, { useContext, useEffect } from "react";
 
 import { CountryGrid } from "../../components/CountryGrid";
 import { RegionFilter } from "../../components/RegionFilter";
 import { SearchBar } from "../../components/SearchBar";
 
+import { CountriesContext } from "../../context/CountriesContext";
+import { types } from "../../context/types";
+
 export const HomeScreen = () => {
-  const [region, setRegion] = useStorage("region", "africa");
-
-  const { data, isLoading } = useFetch(
-    `https://restcountries.eu/rest/v2/region/${encodeURI(region)}`
-  );
-
-  const [dataToShow, setDataToShow] = useState([]);
+  const {
+    countries: { countriesList, countriesToShow },
+    dispatch,
+  } = useContext(CountriesContext);
 
   useEffect(() => {
-    setDataToShow(data);
-  }, [data]);
+    (async () => {
+      const res = await fetch("https://restcountries.eu/rest/v2/all");
+
+      const data = await res.json();
+
+      dispatch({
+        type: types.setCountryList,
+        payload: data,
+      });
+    })();
+  }, [dispatch]);
+
+  console.log(countriesToShow)
 
   return (
     <>
-      <SearchBar setDataToShow={setDataToShow} />
-      <RegionFilter setRegion={setRegion} />
+      <SearchBar dispatch={dispatch} />
+      <RegionFilter dispatch={dispatch} />
 
-      <CountryGrid data={dataToShow} isLoading={isLoading} />
+      <CountryGrid countries={countriesToShow} />
     </>
   );
 };

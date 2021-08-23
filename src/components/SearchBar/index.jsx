@@ -7,19 +7,19 @@ import { Section, Input, Mover, InputBorder } from "./styles";
 import { useFetch } from "../../hooks/useFetch";
 
 export const SearchBar = memo(({ setDataToShow }) => {
-  const [country, setCountry] = useState("");
+  // const [country, setCountry] = useState("");
 
-  const { data, isLoading } = useFetch(
-    `https://restcountries.eu/rest/v2/name/${encodeURI(country)}`
-  );
+  // const { data, isLoading } = useFetch(
+  //   `https://restcountries.eu/rest/v2/name/${encodeURI(country)}`
+  // );
 
-  console.log(data);
+  // console.log(data);
 
-  const handleChange = (e) => {
-    setCountry(e.target.value);
+  // const handleChange = (e) => {
+  //   setCountry(e.target.value);
 
-    if (!isLoading) setDataToShow(data);
-  };
+  //   if (!isLoading) setDataToShow(data);
+  // };
 
   return (
     <Section>
@@ -33,7 +33,7 @@ export const SearchBar = memo(({ setDataToShow }) => {
         <Input
           autoComplete="no"
           placeholder="Search for a country..."
-          onChange={handleChange}
+          // onChange={handleChange}
         />
       </InputBorder>
     </Section>

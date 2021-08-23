@@ -4,25 +4,37 @@ import { RegionOption } from "../RegionOption";
 
 import { Container } from "../../css/components";
 import { SelectBorder, Select } from "./styles";
+import { types } from "../../context/types";
 
-export const RegionFilter = ({ setRegion }) => (
-  <Container>
-    <SelectBorder>
-      <Select as="select" onChange={({ target }) => setRegion(target.value)}>
-        <option disabled defaultValue>
-          Filter by Region
-        </option>
+export const RegionFilter = ({ dispatch }) => {
+  const handleChange = ({ target }) => {
+    const regionSelected = target.value;
 
-        <RegionOption value="africa" />
+    dispatch({
+      type: types.setRegion,
+      payload: { regionSelected },
+    });
+  };
 
-        <RegionOption value="americas" />
+  return (
+    <Container>
+      <SelectBorder>
+        <Select as="select" onChange={handleChange}>
+          <option disabled defaultValue>
+            Filter by Region
+          </option>
 
-        <RegionOption value="asia" />
+          <RegionOption value="Africa" />
 
-        <RegionOption value="europe" />
+          <RegionOption value="Americas" />
 
-        <RegionOption value="oceania" />
-      </Select>
-    </SelectBorder>
-  </Container>
-);
+          <RegionOption value="Asia" />
+
+          <RegionOption value="Europe" />
+
+          <RegionOption value="Oceania" />
+        </Select>
+      </SelectBorder>
+    </Container>
+  );
+};

@@ -13,9 +13,6 @@ export const useFetch = (url) => {
       const res = await fetch(url);
       const data = await res.json();
 
-
-
-
       setDataStore({
         data: [...data],
         isLoading: false,
