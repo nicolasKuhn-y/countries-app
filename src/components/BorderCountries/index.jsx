@@ -1,15 +1,20 @@
 import React from "react";
 
-import { CountryBox, CountryContainer } from "./styles";
+import { getBorderCountryName } from "../../helpers/getBorderCountries";
 
-export const BorderCountries = ({ borders }) => {
+import { LinkBox, CountryContainer } from "./styles";
+
+export const BorderCountries = ({ borders, countries }) => {
   return (
     <CountryContainer>
-      {borders.map((border) => (
-        <CountryBox key={border} as="div">
-          <span>{border}</span>
-        </CountryBox>
-      ))}
+      {borders.map((border) => {
+        const countryName = getBorderCountryName(countries, border);
+        return (
+          <LinkBox key={border} to={`/detail/${countryName}`}>
+            <span>{countryName}</span>
+          </LinkBox>
+        );
+      })}
     </CountryContainer>
   );
 };

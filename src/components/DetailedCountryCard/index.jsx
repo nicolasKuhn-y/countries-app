@@ -12,6 +12,8 @@ import {
 import { CardInfo } from "../CardInfo";
 import { BorderCountries } from "../BorderCountries";
 
+import { formatPopulation } from "../../helpers/formatPopulation";
+
 export const DetailedCountryCard = ({
   name,
   flag,
@@ -24,6 +26,7 @@ export const DetailedCountryCard = ({
   currencies,
   languages,
   borders,
+  countries,
 }) => {
   return (
     <section>
@@ -35,7 +38,10 @@ export const DetailedCountryCard = ({
             <CardContentContainer mr>
               <CardInfo title="Native Name" data={nativeName} />
 
-              <CardInfo title="Population" data={population} />
+              <CardInfo
+                title="Population"
+                data={formatPopulation(population)}
+              />
 
               <CardInfo title="Region" data={region} />
 
@@ -62,7 +68,7 @@ export const DetailedCountryCard = ({
           {borders.length > 0 ? (
             <div>
               <h3>Border Countries</h3>
-              <BorderCountries borders={borders} />
+              <BorderCountries borders={borders} countries={countries} />
             </div>
           ) : null}
         </Card>

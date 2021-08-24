@@ -23,7 +23,11 @@ export const DetailScreen = ({ history }) => {
         </Button>
       </Container>
 
-      <DetailedCountryCard {...countryToShow} history={history} />
+      <DetailedCountryCard
+        {...countryToShow}
+        history={history}
+        countries={countries.countriesList}
+      />
     </div>
   );
 };
