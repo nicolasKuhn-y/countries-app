@@ -26,8 +26,6 @@ export const HomeScreen = () => {
     })();
   }, [dispatch]);
 
-  console.log(countriesToShow);
-
   return (
     <>
       <SearchBar dispatch={dispatch} />

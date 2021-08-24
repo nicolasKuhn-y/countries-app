@@ -22,6 +22,7 @@ export const DetailScreen = ({ history }) => {
           &#8592; Back
         </Button>
       </Container>
+
       <DetailedCountryCard {...countryToShow} history={history} />
     </div>
   );
