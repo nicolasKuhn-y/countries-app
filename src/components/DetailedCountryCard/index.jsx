@@ -1,11 +1,8 @@
 import React from "react";
 
-import { Container } from "../../css/components";
-
 import {
-  Button,
   DetailContainer,
-  FlexContainer,
+  CardContentContainer,
   Flag,
   CardContentWrapper,
   Card,
@@ -13,6 +10,7 @@ import {
 } from "./styles";
 
 import { CardInfo } from "../CardInfo";
+import { BorderCountries } from "../BorderCountries";
 
 export const DetailedCountryCard = ({
   name,
@@ -26,36 +24,15 @@ export const DetailedCountryCard = ({
   currencies,
   languages,
   borders,
-  history,
 }) => {
-  const handleBack = () => history.goBack();
-
-  const formattedCurrencie = currencies.reduce(
-    (acc, { name }) => acc + name,
-    ""
-  );
-
-  const formattedLanguages = languages.reduce(
-    (acc, { name }) => acc + " " + name,
-    ""
-  );
-
-  console.log(formattedLanguages);
-
   return (
     <section>
-      <Container>
-        <Button as="button" onClick={handleBack}>
-          &#8592; Back
-        </Button>
-      </Container>
-
       <DetailContainer>
         <Flag src={flag} alt={`${name} flag`} />
         <Card>
           <Title>{name}</Title>
           <CardContentWrapper>
-            <FlexContainer mr>
+            <CardContentContainer mr>
               <CardInfo title="Native Name" data={nativeName} />
 
               <CardInfo title="Population" data={population} />
@@ -65,16 +42,29 @@ export const DetailedCountryCard = ({
               <CardInfo title="Subregion" data={subregion} />
 
               <CardInfo title="Capital" data={capital} />
-            </FlexContainer>
+            </CardContentContainer>
 
-            <FlexContainer>
+            <CardContentContainer>
               <CardInfo title="Top Level Domain" data={topLevelDomain} />
 
-              <CardInfo title="Currencies" data={formattedCurrencie} />
+              <CardInfo
+                title="Currencies"
+                data={currencies.reduce((acc, { name }) => acc + name, "")}
+              />
 
-              <CardInfo title="Languages" data={formattedLanguages} />
-            </FlexContainer>
+              <CardInfo
+                title="Languages"
+                data={languages.reduce((acc, { name }) => acc + ` ${name}`, "")}
+              />
+            </CardContentContainer>
           </CardContentWrapper>
+
+          {borders.length > 0 ? (
+            <div>
+              <h3>Border Countries</h3>
+              <BorderCountries borders={borders} />
+            </div>
+          ) : null}
         </Card>
       </DetailContainer>
     </section>

@@ -4,6 +4,7 @@ import { Container } from "../../css/components";
 
 export const Flag = styled.img`
   border-radius: 0.2rem;
+  margin-bottom: 1rem;
 
   @media (min-width: 62.5rem) {
     max-width: 500px;
@@ -28,24 +29,9 @@ export const Card = styled.article`
   }
 `;
 
-export const Button = styled.button`
-  cursor: pointer;
-  font-family: inherit;
-  font-size: inherit;
-  border: none;
-  border-radius: 0.25rem;
-  padding: 0.5rem 1rem;
-  min-width: 100px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-
-  color: ${({ theme }) => theme.text};
-  background-color: ${({ theme }) => theme.elements};
-`;
-
-export const FlexContainer = styled(Container)`
+export const CardContentContainer = styled(Container)`
   & > * {
-    margin: 0.8rem 0;
+    margin: 0.5rem 0;
     font-size: 1rem;
   }
 
@@ -53,13 +39,19 @@ export const FlexContainer = styled(Container)`
     font-weight: 600;
   }
 
-  @media (min-width: 62.5rem) {
-    margin-right: ${({ mr }) => "5rem"};
+  @media (min-width: 62.5rem) and (max-width: 75rem) {
+    margin: 1rem 0;
+  }
+
+  @media (min-width: 75rem) {
+    margin: 0;
   }
 `;
 
 export const CardContentWrapper = styled(Container)`
   @media (min-width: 75rem) {
     display: flex;
+    justify-content: space-between;
+    max-width: 34.375rem;
   }
 `;

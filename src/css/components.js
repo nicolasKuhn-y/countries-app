@@ -29,3 +29,15 @@ export const Controller = styled.input`
   color: ${({ theme }) => theme.text};
   background-color: ${({ theme }) => theme.background};
 `;
+
+export const BorderedBox = styled.button`
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  min-width: 100px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+  color: ${({ theme }) => theme.text};
+  background-color: ${({ theme }) => theme.elements};
+`;
