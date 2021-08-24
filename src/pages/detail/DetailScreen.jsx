@@ -25,7 +25,6 @@ export const DetailScreen = ({ history }) => {
 
       <DetailedCountryCard
         {...countryToShow}
-        history={history}
         countries={countries.countriesList}
       />
     </div>

@@ -42,5 +42,6 @@ export const NavigationWrapper = styled(FlexWrapper)`
 `;
 
 export const Span = styled.span`
+  cursor: pointer;
   font-weight: 600;
 `;

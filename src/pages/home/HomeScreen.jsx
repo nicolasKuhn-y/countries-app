@@ -5,7 +5,8 @@ import { RegionFilter } from "../../components/RegionFilter";
 import { SearchBar } from "../../components/SearchBar";
 
 import { CountriesContext } from "../../context/CountriesContext";
-import { types } from "../../context/types";
+
+import { getCountries } from "../../helpers/getCountries";
 
 export const HomeScreen = () => {
   const {
@@ -14,16 +15,8 @@ export const HomeScreen = () => {
   } = useContext(CountriesContext);
 
   useEffect(() => {
-    (async () => {
-      const res = await fetch("https://restcountries.eu/rest/v2/all");
-
-      const data = await res.json();
-
-      dispatch({
-        type: types.setCountryList,
-        payload: data,
-      });
-    })();
+    if (!(localStorage.getItem("countryList") in localStorage))
+      getCountries("https://restcountries.eu/rest/v2/all", dispatch);
   }, [dispatch]);
 
   return (

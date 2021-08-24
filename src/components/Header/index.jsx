@@ -24,7 +24,7 @@ export const Header = ({ changeTheme, theme }) => {
             )}
           </IconContext.Provider>
 
-          <Span>{theme ? "Dark mode" : "Light mode"}</Span>
+          <Span onClick={changeTheme}  >{theme ? "Dark mode" : "Light mode"}</Span>
         </NavigationWrapper>
       </Navigation>
     </StyledHeader>

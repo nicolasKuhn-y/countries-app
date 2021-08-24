@@ -26,7 +26,6 @@ export const DetailedCountryCard = ({
   currencies,
   languages,
   borders,
-  countries,
 }) => {
   return (
     <section>
@@ -68,7 +67,7 @@ export const DetailedCountryCard = ({
           {borders.length > 0 ? (
             <div>
               <h3>Border Countries</h3>
-              <BorderCountries borders={borders} countries={countries} />
+              <BorderCountries borders={borders} />
             </div>
           ) : null}
         </Card>
