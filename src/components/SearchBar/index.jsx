@@ -10,10 +10,6 @@ import axios from "axios";
 export const SearchBar = ({ dispatch }) => {
   const [search, setSearch] = useState("");
 
-  const handleChange = ({ target }) => {
-    setSearch(target.value);
-  };
-
   useEffect(() => {
     if (search.length > 5) {
       (async () => {
@@ -26,6 +22,11 @@ export const SearchBar = ({ dispatch }) => {
           payload: data,
         });
       })();
+    } else {
+      dispatch({
+        type: types.SET_SEARCHED_COUNTRY,
+        payload: JSON.parse(localStorage.getItem("countryList")),
+      });
     }
   }, [dispatch, search]);
 
@@ -42,7 +43,7 @@ export const SearchBar = ({ dispatch }) => {
           autoComplete="no"
           placeholder="Search for a country..."
           value={search}
-          onChange={handleChange}
+          onChange={({ target }) => setSearch(target.value)}
         />
       </InputBorder>
     </Section>
