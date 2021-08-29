@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React from "react";
 
 import { AppRouter } from "./routers/AppRouter";
 
@@ -8,26 +8,18 @@ import { lightTheme, darkTheme } from "./css/themes";
 
 import { useDarkMode } from "./hooks/useDarkMode";
 
-import { countriesReducer } from "./context/countriesReducer";
-import { CountriesContext } from "./context/CountriesContext";
-
-const initialState = {
-  countriesList: JSON.parse(localStorage.getItem("countryList")) || [],
-  countriesToShow: JSON.parse(localStorage.getItem("countryList")) || [],
-};
+import { CountriesProvider } from "./context/CountriesContext";
 
 export const App = () => {
-  const [countries, dispatch] = useReducer(countriesReducer, initialState);
-
-  const { theme, handleThemeChange } = useDarkMode();
+  const { theme, handleThemeChange } = useDarkMode("isLightModeEnabled");
 
   return (
-    <CountriesContext.Provider value={{ countries, dispatch }}>
+    <CountriesProvider>
       <ThemeProvider theme={theme ? lightTheme : darkTheme}>
         <GlobalStyles />
 
         <AppRouter theme={theme} handleThemeChange={handleThemeChange} />
       </ThemeProvider>
-    </CountriesContext.Provider>
+    </CountriesProvider>
   );
 };

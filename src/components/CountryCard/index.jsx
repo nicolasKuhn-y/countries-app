@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Card, CardContent, StyledLink } from "./styles";
+import { Card, CardContent, StyledLink, Flag } from "./styles";
 
 import { CardInfo } from "../CardInfo";
 
@@ -9,7 +9,7 @@ import { formatPopulation } from "../../helpers/formatPopulation";
 export const CountryCard = ({ flag, name, population, region, capital }) => (
   <Card>
     <StyledLink to={`/detail/${name}`}>
-      <img src={flag} alt={name} />
+      <Flag src={flag} alt={name} />
 
       <CardContent>
         <h3>{name}</h3>

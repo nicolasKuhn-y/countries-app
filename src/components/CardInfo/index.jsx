@@ -2,6 +2,6 @@ import React from "react";
 
 export const CardInfo = ({ title, data }) => (
   <p>
-    <b>{title}:</b> {data}
+    <b style={{ fontWeight: 600 }}>{title}:</b> {data}
   </p>
 );

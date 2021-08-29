@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 
-export const useDarkMode = () => {
-  const isDarkModeEnabled =
-    localStorage.getItem("theme") === "false" ? false : true;
-
-  const [theme, setTheme] = useState(isDarkModeEnabled);
+export const useDarkMode = (key) => {
+  const [theme, setTheme] = useState(() =>
+    localStorage.getItem(key) === "false" ? false : true
+  );
 
   const handleThemeChange = () => setTheme(!theme);
 
-  useEffect(() => localStorage.setItem("theme", theme), [theme]);
+  useEffect(() => localStorage.setItem(key, theme), [theme, key]);
 
   return {
     theme,

@@ -1,6 +1,11 @@
 import React from "react";
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
 import { HomeScreen } from "../pages/home/HomeScreen";
 import { DetailScreen } from "../pages/detail/DetailScreen";
@@ -13,9 +18,11 @@ export const AppRouter = ({ theme, handleThemeChange }) => {
 
       <main>
         <Switch>
+          <Route exact path="/" component={HomeScreen} />
+
           <Route exact path="/detail/:countryName" component={DetailScreen} />
 
-          <Route path="/" component={HomeScreen} />
+          <Redirect to="/" />
         </Switch>
       </main>
     </Router>

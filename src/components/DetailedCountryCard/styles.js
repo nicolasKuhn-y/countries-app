@@ -35,10 +35,6 @@ export const CardContentContainer = styled(Container)`
     font-size: 1rem;
   }
 
-  b {
-    font-weight: 600;
-  }
-
   @media (min-width: 62.5rem) and (max-width: 75rem) {
     margin: 1rem 0;
   }

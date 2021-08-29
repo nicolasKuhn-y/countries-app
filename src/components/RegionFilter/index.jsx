@@ -11,7 +11,7 @@ export const RegionFilter = ({ dispatch }) => {
     const regionSelected = target.value;
 
     dispatch({
-      type: types.setRegion,
+      type: types.SET_REGION,
       payload: { regionSelected },
     });
   };

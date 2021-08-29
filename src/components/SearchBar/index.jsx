@@ -1,22 +1,33 @@
-import React, { memo, useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { IconContext } from "react-icons/lib";
 import { HiSearch } from "react-icons/hi";
 
 import { Section, Input, Mover, InputBorder } from "./styles";
 import { types } from "../../context/types";
+import axios from "axios";
 
-export const SearchBar = memo(({ dispatch }) => {
+export const SearchBar = ({ dispatch }) => {
   const [search, setSearch] = useState("");
 
   const handleChange = ({ target }) => {
     setSearch(target.value);
-
-    dispatch({
-      type: types.setSearchCountry,
-      payload: { search },
-    });
   };
+
+  useEffect(() => {
+    if (search.length > 5) {
+      (async () => {
+        const { data } = await axios.get(
+          `https://restcountries.eu/rest/v2/name/${encodeURI(search)}`
+        );
+
+        dispatch({
+          type: types.SET_SEARCHED_COUNTRY,
+          payload: data,
+        });
+      })();
+    }
+  }, [dispatch, search]);
 
   return (
     <Section>
@@ -36,4 +47,4 @@ export const SearchBar = memo(({ dispatch }) => {
       </InputBorder>
     </Section>
   );
-});
+};

@@ -8,6 +8,7 @@ import { FiMoon, FiSun } from "react-icons/fi";
 import { IconContext } from "react-icons/lib";
 
 export const Header = ({ changeTheme, theme }) => {
+
   return (
     <StyledHeader>
       <Navigation>

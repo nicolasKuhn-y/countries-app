@@ -24,6 +24,13 @@ export const Card = styled.article`
   }
 `;
 
+export const Flag = styled.img`
+  width: 18.75rem;
+  height: 12.5rem;
+  object-fit: cover;
+  vertical-align: bottom;
+`;
+
 export const CardContent = styled.div`
   padding: 1.5rem 1rem;
 `;

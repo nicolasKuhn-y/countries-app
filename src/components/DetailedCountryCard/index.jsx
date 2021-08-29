@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useParams } from "react-router-dom";
 
 import {
   DetailContainer,
@@ -13,20 +14,31 @@ import { CardInfo } from "../CardInfo";
 import { BorderCountries } from "../BorderCountries";
 
 import { formatPopulation } from "../../helpers/formatPopulation";
+import { getCountryByName } from "../../helpers/getCountryByName";
 
-export const DetailedCountryCard = ({
-  name,
-  flag,
-  population,
-  region,
-  capital,
-  nativeName,
-  subregion,
-  topLevelDomain,
-  currencies,
-  languages,
-  borders,
-}) => {
+import { CountriesContext } from "../../context/CountriesContext";
+
+export const DetailedCountryCard = () => {
+  const { countryName } = useParams();
+
+  const [{ countriesList }] = useContext(CountriesContext);
+
+  const countryToShow = getCountryByName(countryName, countriesList);
+
+  const {
+    name,
+    flag,
+    nativeName,
+    population,
+    currencies,
+    languages,
+    region,
+    subregion,
+    capital,
+    topLevelDomain,
+    borders,
+  } = countryToShow;
+
   return (
     <section>
       <DetailContainer>
@@ -54,12 +66,15 @@ export const DetailedCountryCard = ({
 
               <CardInfo
                 title="Currencies"
-                data={currencies.reduce((acc, { name }) => acc + name, "")}
+                data={currencies.reduce((list, { name }) => list + name, "")}
               />
 
               <CardInfo
                 title="Languages"
-                data={languages.reduce((acc, { name }) => acc + ` ${name}`, "")}
+                data={languages.reduce(
+                  (list, { name }) => list + ` ${name}`,
+                  ""
+                )}
               />
             </CardContentContainer>
           </CardContentWrapper>
