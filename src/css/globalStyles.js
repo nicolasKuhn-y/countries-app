@@ -37,4 +37,41 @@ img{
     max-width: 100%;
     height: auto;
 }
-`
+
+/*
+    React-paginate es imcompatible con styled components
+    asi que hay que volver a lo clasico.
+*/
+
+.pagination__container {
+  display: flex;
+  list-style: none;
+  font-size: 1rem;
+  margin: 1.5rem 0;
+}
+
+.pagination__page-number,
+.break {
+  display: none;
+}
+
+.pagination__arrow {
+  cursor: pointer;
+  margin: 0 0.5rem;
+  background-color: ${({ theme }) => theme.background};
+  border-radius: 0.25rem;
+  transition: background-color 350ms ease-in;
+}
+
+.pagination__arrow a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem 1rem;
+}
+
+.pagination__arrow.disabled,
+.pagination__arrow:hover {
+  background-color: ${({ theme }) => theme.input};
+}
+`;

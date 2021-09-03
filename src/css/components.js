@@ -19,16 +19,15 @@ export const Border = styled.div`
   background-color: ${({ theme }) => theme.elements};
 `;
 
-export const Controller = styled.input`
-  font-family: inherit;
-  font-size: inherit;
-  width: 100%;
-  border: none;
-  border-radius: 0.25rem;
-
-  color: ${({ theme }) => theme.text};
-  background-color: ${({ theme }) => theme.background};
-`;
+export const Controller = styled.input(({ theme }) => ({
+  fontFamily: "inherit",
+  fontSize: "inherit",
+  width: "100%",
+  border: "none",
+  borderRadius: "0.25rem",
+  color: theme.text,
+  backgroundColor: theme.background,
+}));
 
 export const BorderedBox = css`
   border: none;

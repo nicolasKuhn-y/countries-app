@@ -6,6 +6,6 @@ export const Button = styled.button`
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;
-
+  
   ${BorderedBox};
 `;

@@ -1,6 +1,7 @@
 import { types } from "./types";
 
-import { filterByRegion } from "./countriesActions";
+const filterByRegion = (list, _region) =>
+  list.filter(({ region }) => region === _region);
 
 export const countriesReducer = (state, { type, payload }) => {
   const { countriesList } = state;
@@ -12,7 +13,7 @@ export const countriesReducer = (state, { type, payload }) => {
     case types.SET_REGION:
       return {
         ...state,
-        countriesToShow: filterByRegion(countriesList, payload.regionSelected),
+        countriesToShow: filterByRegion(countriesList, payload),
       };
 
     case types.SET_SEARCHED_COUNTRY:

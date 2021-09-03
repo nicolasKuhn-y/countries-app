@@ -1,32 +1,31 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import { IconContext } from "react-icons/lib";
 import { HiSearch } from "react-icons/hi";
 
 import { Section, Input, Mover, InputBorder } from "./styles";
-import { types } from "../../context/types";
-import axios from "axios";
+
+import { setSearchedCountryAction } from "../../context/countriesActions";
 
 export const SearchBar = ({ dispatch }) => {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    if (search.length > 5) {
+    if (search.length > 3) {
       (async () => {
         const { data } = await axios.get(
           `https://restcountries.eu/rest/v2/name/${encodeURI(search)}`
         );
 
-        dispatch({
-          type: types.SET_SEARCHED_COUNTRY,
-          payload: data,
-        });
+        dispatch(setSearchedCountryAction(data));
       })();
     } else {
-      dispatch({
-        type: types.SET_SEARCHED_COUNTRY,
-        payload: JSON.parse(localStorage.getItem("countryList")),
-      });
+      dispatch(
+        setSearchedCountryAction(
+          JSON.parse(localStorage.getItem("countryList"))
+        )
+      );
     }
   }, [dispatch, search]);
 

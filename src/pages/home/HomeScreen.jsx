@@ -5,9 +5,9 @@ import { RegionFilter } from "../../components/RegionFilter";
 import { SearchBar } from "../../components/SearchBar";
 import { Spinner } from "../../components/Spinner";
 
+import { setCountryListAction } from "../../context/countriesActions";
 import { CountriesContext } from "../../context/CountriesContext";
 
-import { types } from "../../context/types";
 import { useAxios } from "../../hooks/useAxios";
 
 export const HomeScreen = () => {
@@ -16,18 +16,16 @@ export const HomeScreen = () => {
 
   const { countriesToShow } = countries;
 
-  useEffect(() => {
-    if (!(localStorage.getItem("countryList") in localStorage)) {
-      if (data !== null) {
-        dispatch({
-          type: types.SET_COUNTRY_LIST,
-          payload: data,
-        });
+  const areCountriesInStorage =
+    localStorage.getItem("countryList") in localStorage;
 
-        localStorage.setItem("countryList", JSON.stringify(data));
-      }
+  useEffect(() => {
+    if (!areCountriesInStorage && data !== null) {
+      dispatch(setCountryListAction(data));
+
+      localStorage.setItem("countryList", JSON.stringify(data));
     }
-  }, [data, dispatch]);
+  }, [data, dispatch, areCountriesInStorage]);
 
   return (
     <>

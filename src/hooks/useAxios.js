@@ -9,19 +9,24 @@ export const useAxios = (url) => {
     isLoading: true,
   });
 
+  const setProp = (prop, value) =>
+    setDataRetrieved((prev) => ({ ...prev, [prop]: value }));
+
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get(url);
+        await axios
+        .get(url)
+        .then(({ data }) => setProp("data", data));
 
-        setDataRetrieved((prev) => ({ ...prev, data: data }));
       } catch (error) {
-        throw new Error(`An error has just ocurred ${error} `);
+        console.log(error);
+        
       } finally {
-        setDataRetrieved((prev) => ({ ...prev, isLoading: false }));
+        setProp("isLoading", false);
       }
     })();
-  }, [setDataRetrieved, url]);
+  }, [url]);
 
   return dataRetrieved;
 };
