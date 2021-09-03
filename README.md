@@ -9,6 +9,7 @@ Aplicacion de consulta sobre paises e informacion relacionada. Es el proyecto ma
 3. Filtro de busqueda de paises por continente.
 4. Pagina de detalle en donde se encuentra mas informacion sobre un pais seleccionado.
 5. Modo oscuro/claro.
+6. Paginacion para agilizar la visualizacion de los paises.
 
 ## Construido con 🛠️
 
