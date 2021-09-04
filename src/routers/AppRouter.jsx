@@ -18,11 +18,11 @@ export const AppRouter = ({ theme, handleThemeChange }) => {
 
       <main>
         <Switch>
-          <Route exact path="/" component={HomeScreen} />
+          <Route exact path="/countries-app" component={HomeScreen} />
 
           <Route exact path="/detail/:countryName" component={DetailScreen} />
 
-          <Redirect to="/" />
+          <Redirect to="/countries-app" />
         </Switch>
       </main>
     </Router>

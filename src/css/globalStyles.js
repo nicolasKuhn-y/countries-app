@@ -12,7 +12,7 @@ body {
     font-size: 14px;
     height: 100%;
     font-family: 'Nunito Sans', sans-serif;
-    transition: all 0.35s linear;
+    transition: background-color 0.15s linear, color 0.15s linear;
     
     background-color: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.text};
