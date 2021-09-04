@@ -20,7 +20,7 @@ export const AppRouter = ({ theme, handleThemeChange }) => {
         <Switch>
           <Route exact path="/countries-app" component={HomeScreen} />
 
-          <Route exact path="/detail/:countryName" component={DetailScreen} />
+          <Route exact path="countries-app/detail/:countryName" component={DetailScreen} />
 
           <Redirect to="/countries-app" />
         </Switch>
